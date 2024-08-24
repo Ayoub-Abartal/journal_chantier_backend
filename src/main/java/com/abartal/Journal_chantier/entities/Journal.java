@@ -34,6 +34,18 @@ public class Journal extends BaseEntity{
     @OneToMany(mappedBy="visitor", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Visitor> visitors;
 
+    @OneToMany(mappedBy = "observation", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Observation> observations;
 
+    @OneToMany(mappedBy="work_time", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<WorkTime> workTimes;
 
+    @OneToMany(mappedBy = "incidence",cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Incidence> incidences;
+
+    @OneToMany(mappedBy = "human_resource",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<HumanResource> humanResources;
+
+    @OneToMany(mappedBy = "signature",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<Signature> signatures;
 }

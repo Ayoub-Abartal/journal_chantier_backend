@@ -1,5 +1,6 @@
 package com.abartal.Journal_chantier.entities;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -13,13 +14,11 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Observation extends BaseEntity{
+public class Incidence extends BaseEntity{
 
-    private String nomQualite;
     private String description;
 
     @ManyToOne
     @JoinColumn(name="journal_id")
     private Journal journal;
-
 }

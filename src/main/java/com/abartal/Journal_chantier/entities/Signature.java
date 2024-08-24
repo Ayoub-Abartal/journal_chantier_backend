@@ -13,13 +13,13 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Observation extends BaseEntity{
+public class Signature  extends BaseEntity{
 
-    private String nomQualite;
-    private String description;
+    private String name;
+    private String quality;
+    private String signature;
 
     @ManyToOne
     @JoinColumn(name="journal_id")
     private Journal journal;
-
 }
