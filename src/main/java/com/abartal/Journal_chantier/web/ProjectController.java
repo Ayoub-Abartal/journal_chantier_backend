@@ -21,7 +21,7 @@ public class ProjectController {
      * */
 
     @PostMapping(path="/projects/add")
-    public Project addProejct(@RequestBody Project project){
+    public Project addProject(@RequestBody Project project){
             return projectService.addProject(project);
     }
 }
