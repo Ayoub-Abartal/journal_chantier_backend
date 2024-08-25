@@ -1,5 +1,6 @@
 package com.abartal.Journal_chantier.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,6 +27,7 @@ public class Journal extends BaseEntity{
 
     @ManyToOne
     @JoinColumn(name="project_id")
+    @JsonBackReference
     private Project project;
 
     @OneToMany(mappedBy = "journal", cascade = CascadeType.ALL,orphanRemoval = true)

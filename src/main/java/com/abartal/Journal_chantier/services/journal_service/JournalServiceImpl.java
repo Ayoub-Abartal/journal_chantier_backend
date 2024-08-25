@@ -1,7 +1,10 @@
 package com.abartal.Journal_chantier.services.journal_service;
 
 import com.abartal.Journal_chantier.entities.Journal;
+import com.abartal.Journal_chantier.entities.Project;
 import com.abartal.Journal_chantier.repositories.JournalRepository;
+import com.abartal.Journal_chantier.repositories.ProjectRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +14,11 @@ public class JournalServiceImpl implements JournalService{
 
     private JournalRepository journalRepository;
 
-    public JournalServiceImpl(JournalRepository journalRepository){
+    private ProjectRepository projectRepository;
+
+    public JournalServiceImpl(JournalRepository journalRepository, ProjectRepository projectRepository){
         this.journalRepository = journalRepository;
+        this.projectRepository = projectRepository;
     }
 
     @Override
@@ -21,13 +27,19 @@ public class JournalServiceImpl implements JournalService{
     }
 
     @Override
-    public Journal getJournal(Long journal_id) {
-        return null;
+    public Journal getJournal(Long journal_id) throws Exception {
+
+        return journalRepository.findById(journal_id).orElseThrow(()->new Exception("Journal not found"));
     }
 
     @Override
-    public Journal addJournal(Journal journal) {
-        return null;
+    @Transactional
+    public Journal addJournal(Journal journal, Long project_id) throws Exception {
+        Project project = projectRepository.findById(project_id).orElseThrow(()-> new Exception("Project not found"));
+
+        journal.setProject(project);
+        return journalRepository.save(journal);
+
     }
 
     @Override

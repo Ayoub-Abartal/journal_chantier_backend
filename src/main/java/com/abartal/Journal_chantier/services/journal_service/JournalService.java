@@ -8,9 +8,9 @@ public interface JournalService {
 
     List<Journal> getAllJournals();
 
-    Journal getJournal(Long journal_id);
+    Journal getJournal(Long journal_id) throws Exception;
 
-    Journal addJournal(Journal journal);
+    Journal addJournal(Journal journal, Long project_id) throws Exception;
 
     Journal updateJournal(Journal journal, Long journal_id);
 
